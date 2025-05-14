@@ -1,10 +1,10 @@
 <div align="center">
   <img src="logo.png" alt="Insight-PTN Logo" width="200">
-  <h1>Insight-PTN</h1>
+  <h1>Insight PTN di Indonesia</h1>
   <p>Analisis dan visualisasi jurusan IPS di Perguruan Tinggi Negeri Indonesia yang sepi peminat namun memiliki prospek kerja bagus.</p>
   
-  [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-  [![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red.svg)](https://streamlit.io/)
+  [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
+  [![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red.svg)](https://tim10d-dashboard.streamlit.app/)
   [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 </div>
 
