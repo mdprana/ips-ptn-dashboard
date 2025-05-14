@@ -3,7 +3,7 @@
   <h1>Insight PTN di Indonesia</h1>
   <p>Analisis dan visualisasi jurusan IPS di Perguruan Tinggi Negeri Indonesia yang sepi peminat namun memiliki prospek kerja bagus.</p>
   
-  [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
+  [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
   [![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red.svg)](https://tim10d-dashboard.streamlit.app/)
   [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 </div>
@@ -34,15 +34,15 @@ Aplikasi Insight-PTN adalah dashboard interaktif yang membantu calon mahasiswa m
 
 1. Clone repository
    ```bash
-   git clone https://github.com/your-username/insight-ptn.git
-   cd insight-ptn
+   git clone https://github.com/mdprana/ips-ptn-dashboard.git
+   cd ips-ptn-dashboard
    ```
 
 2. Buat virtual environment (opsional tapi disarankan)
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   venv\Scripts\activate     # Windows
+   python -m venv .venv
+   .venv\Scripts\activate     # Windows
+   source .venv/bin/activate  # Linux/Mac
    ```
 
 3. Install dependensi
@@ -52,7 +52,7 @@ Aplikasi Insight-PTN adalah dashboard interaktif yang membantu calon mahasiswa m
 
 4. Latih model machine learning
    ```bash
-   python train_models.py
+   python training.py
    ```
 
 5. Jalankan aplikasi Streamlit
