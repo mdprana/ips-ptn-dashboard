@@ -612,6 +612,13 @@ elif menu == "📊 Visualisasi Data":
     with tabs[0]:
         st.markdown("### 📈 Persebaran Data")
         
+        # Penjelasan navigasi persebaran data
+        st.markdown("""
+        Pada tab ini, Anda dapat mengeksplorasi distribusi statistik dari berbagai variabel dalam dataset jurusan IPS PTN. 
+        Pilih dua metrik yang ingin Anda analisis dan bandingkan distribusinya melalui histogram dan box plot.
+        Visualisasi ini membantu memahami sebaran data, nilai tengah, dan outlier setiap variabel.
+        """)
+        
         metric_options = [
             'Peminat 2024', 
             'Rasio Keketatan', 
@@ -652,9 +659,41 @@ elif menu == "📊 Visualisasi Data":
         with col2:
             fig = create_box_plot(df, selected_metric2, f"Box Plot {selected_metric2}")
             st.plotly_chart(fig, use_container_width=True)
+            
+        # Analisis/Storytelling untuk Persebaran Data
+        st.markdown("### 📝 Analisis Persebaran Data")
+        st.markdown(f"""
+        **Insight Persebaran Data:**
+        
+        1. **Persebaran Peminat Jurusan:**
+           Berdasarkan visualisasi di atas, terlihat bahwa distribusi peminat jurusan IPS cenderung miring ke kanan (right-skewed), 
+           yang berarti sebagian besar jurusan memiliki jumlah peminat yang relatif rendah, sementara hanya beberapa jurusan yang 
+           memiliki peminat sangat tinggi. Hal ini mengindikasikan bahwa terdapat ketimpangan minat yang signifikan antar jurusan IPS.
+        
+        2. **Persebaran Gaji:**
+           Untuk gaji awal, distribusinya juga cenderung miring ke kanan, yang menunjukkan bahwa mayoritas jurusan menawarkan 
+           gaji awal pada kisaran menengah, sementara beberapa jurusan unggul menawarkan gaji awal yang jauh lebih tinggi.
+           
+        3. **Outlier dan Variasi:**
+           Box plot menunjukkan adanya outlier dalam data, terutama pada jurusan-jurusan dengan peminat sangat tinggi atau 
+           gaji yang sangat tinggi. Variasi dalam data ini menunjukkan bahwa meskipun banyak jurusan sepi peminat, beberapa 
+           di antaranya tetap menawarkan prospek gaji yang kompetitif.
+           
+        4. **Peluang Tersembunyi:**
+           Data ini menunjukkan adanya "hidden gems" - jurusan yang memiliki peminat rendah (ditunjukkan oleh banyaknya jurusan 
+           di bagian kiri histogram peminat) namun memiliki gaji yang cukup tinggi (nilai pada bagian tengah hingga kanan histogram gaji).
+           Ini adalah peluang bagus bagi calon mahasiswa yang mencari jurusan dengan persaingan masuk lebih rendah namun prospek kerja baik.
+        """)
     
     with tabs[1]:
         st.markdown("### 🔄 Hubungan Antar Variabel")
+        
+        # Penjelasan navigasi hubungan antar variabel
+        st.markdown("""
+        Tab ini menampilkan analisis korelasi antar variabel dalam dataset. Pilih dua variabel untuk 
+        melihat hubungannya dalam scatter plot, dan tambahkan dimensi kategorikal sebagai warna. 
+        Matriks korelasi di bawah memberikan gambaran komprehensif tentang hubungan antar semua variabel numerik.
+        """)
         
         col1, col2, col3 = st.columns(3)
         
@@ -690,9 +729,48 @@ elif menu == "📊 Visualisasi Data":
         )
         fig.update_layout(height=600)
         st.plotly_chart(fig, use_container_width=True)
+        
+        # Analisis/Storytelling untuk Hubungan Antar Variabel
+        st.markdown("### 📝 Analisis Hubungan Antar Variabel")
+        st.markdown("""
+        **Insight Hubungan Antar Variabel:**
+        
+        1. **Hubungan Peminat dan Gaji:**
+           Terdapat korelasi positif lemah antara jumlah peminat dan gaji awal maksimum, yang menunjukkan bahwa meskipun 
+           jurusan populer cenderung menawarkan gaji lebih tinggi, banyak jurusan sepi peminat juga menawarkan gaji kompetitif. 
+           Ini menegaskan premise dasar penelitian bahwa ada jurusan sepi peminat dengan prospek kerja bagus.
+        
+        2. **Korelasi Rasio Keketatan:**
+           Rasio keketatan berkorelasi kuat dengan jumlah peminat (terlihat pada matriks korelasi), menunjukkan bahwa 
+           jurusan populer memiliki tingkat persaingan masuk yang lebih tinggi. Jurusan dengan rasio keketatan rendah 
+           namun gaji tinggi merupakan pilihan strategis bagi calon mahasiswa.
+           
+        3. **Waktu Tunggu Kerja dan Gaji:**
+           Terdapat korelasi negatif antara waktu tunggu kerja dan gaji awal, yang berarti jurusan dengan waktu tunggu 
+           kerja pendek cenderung menawarkan gaji awal yang lebih tinggi. Ini mengindikasikan kebutuhan pasar yang lebih 
+           tinggi untuk lulusan dari jurusan tersebut.
+           
+        4. **Pengaruh Tingkat Kesulitan:**
+           Visualisasi scatter menunjukkan bahwa tingkat kesulitan jurusan tidak selalu berkorelasi dengan gaji. 
+           Terdapat jurusan dengan tingkat kesulitan "Sedang" atau "Rendah" yang menawarkan gaji kompetitif, 
+           sehingga menjadi pilihan ideal bagi siswa yang mencari keseimbangan antara kemudahan studi dan prospek kerja.
+           
+        5. **Daya Tampung vs Peminat:**
+           Matriks korelasi menunjukkan hubungan positif antara daya tampung dan peminat, yang menunjukkan bahwa 
+           PTN telah berusaha menyesuaikan kapasitas jurusan sesuai dengan minat pendaftar, namun rasio keketatan 
+           yang masih tinggi menunjukkan bahwa permintaan tetap melebihi kapasitas untuk jurusan-jurusan populer.
+        """)
     
     with tabs[2]:
         st.markdown("### 🗺️ Distribusi Geografis")
+        
+        # Penjelasan navigasi distribusi geografis
+        st.markdown("""
+        Tab ini menampilkan pemetaan sebaran jurusan IPS PTN di berbagai kota di Indonesia. 
+        Visualisasi peta menunjukkan konsentrasi jurusan berdasarkan lokasi dengan ukuran dan warna yang 
+        menunjukkan jumlah jurusan dan rata-rata gaji. Analisis ini membantu memahami distribusi geografis 
+        peluang pendidikan tinggi IPS di Indonesia.
+        """)
         
         # Koordinat kota-kota di Indonesia
         kota_coords = {
@@ -823,9 +901,48 @@ elif menu == "📊 Visualisasi Data":
             color_continuous_scale='Viridis'
         )
         st.plotly_chart(fig, use_container_width=True)
+        
+        # Analisis/Storytelling untuk Distribusi Geografis
+        st.markdown("### 📝 Analisis Distribusi Geografis")
+        st.markdown("""
+        **Insight Distribusi Geografis:**
+        
+        1. **Ketimpangan Distribusi:**
+           Terlihat adanya ketimpangan distribusi jurusan IPS secara geografis, dengan konsentrasi jurusan tertinggi berada 
+           di Pulau Jawa, khususnya di kota-kota besar seperti Jakarta, Bandung, Yogyakarta, dan Surabaya. Hal ini 
+           mencerminkan ketidakmerataan akses pendidikan tinggi IPS di Indonesia.
+        
+        2. **Korelasi Lokasi dan Gaji:**
+           Kota-kota besar tidak hanya memiliki jumlah jurusan lebih banyak, tetapi juga cenderung menawarkan prospek 
+           gaji yang lebih tinggi, seperti terlihat pada ukuran dan warna titik-titik pada peta. Hal ini dapat dipengaruhi 
+           oleh perbedaan biaya hidup dan keberadaan industri di masing-masing kota.
+           
+        3. **Peluang di Luar Jawa:**
+           Meski jumlahnya lebih sedikit, beberapa kota di luar Jawa seperti Makassar, Medan, dan Denpasar menunjukkan 
+           potensi yang baik dengan rata-rata gaji yang kompetitif. Ini memberikan alternatif bagi calon mahasiswa yang 
+           ingin menghindari persaingan di PTN di Pulau Jawa.
+           
+        4. **Dominasi Fakultas:**
+           Dari grafik fakultas, terlihat bahwa fakultas FISIP, FEB, dan FIS mendominasi jumlah jurusan IPS. Distribusi ini 
+           relatif konsisten di seluruh Indonesia, menunjukkan bahwa meskipun jumlahnya berbeda, komposisi fakultas di 
+           berbagai PTN cenderung serupa.
+           
+        5. **Implikasi untuk Calon Mahasiswa:**
+           Bagi calon mahasiswa dari daerah yang memiliki sedikit jurusan IPS, perlu mempertimbangkan mobilitas ke kota lain. 
+           Namun, dengan berkembangnya pendidikan jarak jauh dan kampus satelit, diharapkan ketimpangan distribusi ini 
+           dapat berkurang di masa depan.
+        """)
     
     with tabs[3]:
         st.markdown("### 🏆 Top Jurusan")
+        
+        # Penjelasan navigasi top jurusan
+        st.markdown("""
+        Tab ini menampilkan jurusan-jurusan terbaik berdasarkan metrik yang Anda pilih. Anda dapat 
+        mengurutkan jurusan berdasarkan jumlah peminat, gaji, rasio keketatan, atau tingkat kelulusan, 
+        dan menyesuaikan jumlah jurusan yang ditampilkan. Visualisasi ini membantu mengidentifikasi 
+        jurusan unggulan berdasarkan kriteria yang paling relevan dengan preferensi Anda.
+        """)
         
         # Pilihan metrik untuk mengurutkan
         sort_metric = st.selectbox(
@@ -865,6 +982,42 @@ elif menu == "📊 Visualisasi Data":
                            'Peminat 2024', 'Gaji Awal Min', 'Gaji Awal Max', 'Tingkat Kelulusan (%)', 
                            'Prospek Kerja Utama']
         st.dataframe(top_jurusan[columns_to_show], use_container_width=True)
+        
+        # Analisis/Storytelling untuk Top Jurusan
+        st.markdown("### 📝 Analisis Top Jurusan")
+        st.markdown(f"""
+        **Insight Top Jurusan berdasarkan {sort_metric}:**
+        
+        1. **Tren Dominan:**
+           {"Jurusan-jurusan dengan gaji tertinggi didominasi oleh jurusan di bidang ekonomi, manajemen, dan hukum. Ini mencerminkan kebutuhan tinggi akan profesional di sektor-sektor tersebut di pasar kerja Indonesia." if sort_metric == 'Gaji Awal Max' else 
+            "Jurusan-jurusan dengan peminat tertinggi umumnya adalah jurusan klasik/tradisional seperti hukum, manajemen, dan hubungan internasional. Popularitas ini seringkali dipengaruhi oleh persepsi masyarakat dan sejarah panjang jurusan tersebut." if sort_metric == 'Peminat 2024' else
+            "Jurusan dengan rasio keketatan tertinggi cenderung merupakan jurusan bergengsi di PTN top, menunjukkan bahwa faktor reputasi institusi sering menjadi pertimbangan utama calon mahasiswa." if sort_metric == 'Rasio Keketatan' else
+            "Jurusan dengan tingkat kelulusan tertinggi umumnya memiliki struktur kurikulum yang lebih terstandarisasi dan dukungan akademik yang baik."}
+        
+        2. **Distribusi PTN:**
+           {"Top jurusan berdasarkan gaji cenderung tersebar di berbagai PTN, tidak hanya di PTN paling bergengsi, yang menunjukkan bahwa prospek gaji tidak selalu berkorelasi dengan reputasi institusi." if sort_metric == 'Gaji Awal Max' else
+            "Peminat tertinggi terkonsentrasi di PTN-PTN top seperti UI, UGM, dan ITB, yang menggambarkan kecenderungan calon mahasiswa memilih universitas bergengsi." if sort_metric == 'Peminat 2024' else
+            "Rasio keketatan tertinggi umumnya ditemukan di PTN bergengsi di Pulau Jawa, mencerminkan kesenjangan akses pendidikan yang masih ada." if sort_metric == 'Rasio Keketatan' else
+            "Tingkat kelulusan tinggi terdapat di berbagai PTN dengan variasi geografis, menunjukkan bahwa kualitas pembelajaran tersebar merata di berbagai institusi."}
+           
+        3. **Hubungan dengan Lokasi:**
+           {"Jurusan dengan gaji tertinggi cenderung terkonsentrasi di kota-kota besar dengan aktivitas ekonomi tinggi, seperti Jakarta, Surabaya, dan Bandung." if sort_metric == 'Gaji Awal Max' else
+            "Lokasi berperan penting dalam popularitas jurusan, dengan PTN di kota besar menarik lebih banyak peminat, meskipun program studi serupa tersedia di kota yang lebih kecil." if sort_metric == 'Peminat 2024' else
+            "Rasio keketatan tertinggi cenderung terjadi di PTN di kota-kota yang menjadi tujuan pendidikan utama, seperti Yogyakarta dan Bandung." if sort_metric == 'Rasio Keketatan' else
+            "Tingkat kelulusan tidak menunjukkan pola yang jelas berdasarkan lokasi, yang mengindikasikan bahwa faktor internal institusi lebih berpengaruh daripada faktor geografis."}
+           
+        4. **Kaitan dengan Prospek Kerja:**
+           {"Terdapat korelasi yang jelas antara jurusan dengan gaji tinggi dan kebutuhan industri yang tinggi, menunjukkan bahwa pasar kerja secara langsung mempengaruhi tingkat kompensasi." if sort_metric == 'Gaji Awal Max' else
+            "Beberapa jurusan dengan peminat tinggi tidak selalu menawarkan prospek kerja terbaik, yang menunjukkan adanya kesenjangan informasi atau pengaruh faktor non-ekonomi dalam pemilihan jurusan." if sort_metric == 'Peminat 2024' else
+            "Jurusan dengan rasio keketatan tinggi tidak selalu menjamin prospek kerja terbaik, sehingga calon mahasiswa perlu mempertimbangkan faktor lain selain popularitas jurusan." if sort_metric == 'Rasio Keketatan' else
+            "Jurusan dengan tingkat kelulusan tinggi cenderung memiliki struktur kurikulum yang lebih selaras dengan kebutuhan industri, memudahkan mahasiswa menyelesaikan studi tepat waktu."}
+        
+        5. **Rekomendasi untuk Calon Mahasiswa:**
+           Berdasarkan visualisasi ini, calon mahasiswa disarankan untuk tidak hanya fokus pada satu metrik saja (seperti popularitas 
+           atau gaji), tetapi mempertimbangkan kombinasi faktor yang relevan dengan tujuan pendidikan dan karir mereka. 
+           Beberapa jurusan yang tidak masuk dalam daftar teratas dari metrik populer mungkin masih menawarkan keseimbangan 
+           yang lebih baik antara prospek karir, kemudahan masuk, dan kualitas pendidikan.
+        """)
 
 elif menu == "🧩 Analisis Cluster":
     st.markdown("## 🧩 Analisis Cluster")
