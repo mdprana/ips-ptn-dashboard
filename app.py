@@ -512,7 +512,7 @@ if menu == "🏠 Beranda":
     st.markdown("## 📖 Tentang Dataset")
     st.write("""
     Dataset ini berisi informasi tentang jurusan IPS di Perguruan Tinggi Negeri (PTN) di Indonesia yang sepi peminat 
-    namun memiliki prospek kerja yang bagus. Dataset mencakup 411 program studi dari 62 PTN di seluruh Indonesia.
+    namun memiliki prospek kerja yang bagus. Dataset mencakup 411 record data, dan 273 program studi dari 62 PTN di seluruh Indonesia.
     
     Meskipun jurusan-jurusan ini relatif sepi peminat, mereka menawarkan prospek kerja yang menjanjikan dengan 
     gaji awal yang kompetitif dan tingkat persaingan kerja yang beragam.
